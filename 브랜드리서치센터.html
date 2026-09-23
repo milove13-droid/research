@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ME: BRANDING 리서치 센터 - 브랜드 기획자의 리서치 툴킷</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #090d16;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+        .font-brand {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+        }
+        .grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .glow-card {
+            box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.15);
+        }
+        .pop-in {
+            animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.94); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="grid-pattern min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-lg sticky top-0 z-40 px-4 py-3.5">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 flex items-center justify-center text-white text-lg shadow-lg shadow-indigo-500/20">
+                    <i class="fa-solid fa-chart-diagram"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px] font-black px-2 py-0.5 rounded uppercase font-brand tracking-wider">ME: BRANDING</span>
+                        <span class="text-xs text-slate-400 font-semibold hidden sm:inline">진로 데이터 분석 솔루션</span>
+                    </div>
+                    <h1 class="font-extrabold text-base sm:text-lg text-white tracking-tight">브랜드 리서치 센터</h1>
+                </div>
+            </div>
+
+            <!-- Progress & Score Status -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-xl flex items-center gap-2.5 shadow-inner">
+                    <i class="fa-solid fa-database text-cyan-400 text-xs"></i>
+                    <span class="text-xs text-slate-300 font-bold">리서치 해독: <span id="progress-count" class="text-cyan-400 font-extrabold text-sm">0</span> / 9</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl w-full mx-auto p-4 md:p-6 flex-1 space-y-6">
+
+        <!-- Brand Research Toolkit Banner -->
+        <div class="bg-gradient-to-r from-slate-950 via-indigo-950/70 to-slate-900 rounded-3xl p-6 border border-indigo-500/30 shadow-2xl relative overflow-hidden glow-card">
+            <div class="absolute -right-16 -top-16 w-60 h-60 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-16 -bottom-16 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+                <div class="space-y-2.5 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-toolbox text-cyan-400"></i>
+                        <span class="font-brand">BRAND STRATEGIST TOOLKIT</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-black text-white leading-tight">
+                        브랜드 기획자의 리서치 툴킷
+                    </h2>
+                    <p class="text-xs md:text-sm text-slate-300 max-w-2xl leading-relaxed">
+                        좋은 브랜드는 감이 아니라 <span class="text-cyan-300 font-bold">정확한 데이터</span>로 만들어집니다.<br>
+                        아래 9개 사이트는 여러분의 진로 리서치에 필요한 <span class="text-indigo-300 font-bold">공식 데이터베이스</span>입니다.<br>
+                        암호를 해독하여 데이터 도구를 수집하고 실제 사이트로 이동해보세요.
+                    </p>
+                </div>
+
+                <!-- Strategic Progress Card -->
+                <div class="bg-slate-900/90 border border-slate-800 p-4.5 rounded-2xl w-full lg:w-64 text-center shrink-0 shadow-xl">
+                    <div class="flex justify-between text-xs text-slate-400 font-bold mb-1.5">
+                        <span>데이터 수집율</span>
+                        <span id="progress-percent" class="text-cyan-400 font-brand">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800 mb-2.5 p-0.5">
+                        <div id="energy-bar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-400 h-full w-0 transition-all duration-500 rounded-full"></div>
+                    </div>
+                    <div class="text-xs font-bold text-amber-300 bg-amber-400/10 py-1.5 px-3 rounded-lg border border-amber-400/20" id="rank-badge">
+                        신입 브랜드 주니어 💼
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="planet-grid">
+            <!-- JavaScript dynamically renders 9 data tools -->
+        </div>
+
+    </main>
+
+    <div id="mission-modal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-indigo-500/40 rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-5 relative overflow-hidden pop-in">
+            <div class="absolute -top-16 -right-16 w-36 h-36 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3.5">
+                <div class="flex items-center gap-3">
+                    <span id="modal-planet-num" class="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-600 text-white font-extrabold text-xs flex items-center justify-center font-brand shadow-md">01</span>
+                    <div>
+                        <span id="unlocked-category-badge" class="text-[10px] font-bold text-indigo-400 block uppercase tracking-wider font-brand">RESEARCH TOOL</span>
+                        <h3 id="modal-title" class="font-bold text-white text-base">데이터베이스 명칭</h3>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white transition p-1.5 rounded-lg hover:bg-slate-800">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Quiz View (Locked State) -->
+            <div id="quiz-section" class="space-y-4">
+                <div class="bg-slate-950/90 border border-slate-800 p-4 rounded-2xl text-center relative">
+                    <span class="text-[11px] text-cyan-400 font-bold uppercase tracking-wider block mb-1">🔐 데이터 접근 초성 암호</span>
+                    <div id="modal-initials" class="text-2xl sm:text-3xl font-black text-amber-400 tracking-widest my-2 font-brand drop-shadow">
+                        ㅋ ㄹ ㅇ ㄴ
+                    </div>
+                    <p id="modal-hint" class="text-xs text-slate-300 leading-relaxed bg-slate-900/80 p-3 rounded-xl border border-slate-800/80 text-left mt-2">
+                        툴킷 설명이 표시됩니다.
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold text-slate-400">명칭을 입력하여 도구를 해독하세요</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="quiz-input" placeholder="정답 입력 (예: 커리어넷)" 
+                            class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+                        <button onclick="submitQuiz()" class="bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-extrabold px-5 py-3 rounded-xl text-sm transition shrink-0 shadow-lg shadow-indigo-600/30 active:scale-95">
+                            해독
+                        </button>
+                    </div>
+                    <p id="quiz-error" class="text-xs text-rose-400 hidden mt-1 flex items-center gap-1">
+                        <i class="fa-solid fa-circle-exclamation"></i> 암호가 올바르지 않습니다. 초성과 힌트를 다시 확인해보세요.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Site Unlocked View (QR Code & Direct Access Link) -->
+            <div id="info-section" class="hidden space-y-4">
+                <div class="bg-emerald-950/40 border border-emerald-500/40 p-3.5 rounded-2xl flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center text-xl font-black shrink-0 shadow-md">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded border border-emerald-500/30">해독 완료</span>
+                            <span id="unlocked-category" class="text-[10px] text-slate-400 font-medium">진로 데이터</span>
+                        </div>
+                        <h4 id="unlocked-name" class="text-base font-extrabold text-white mt-0.5">커리어넷</h4>
+                    </div>
+                </div>
+
+                <!-- Dynamic QR Code Container -->
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-center space-y-3">
+                    <p class="text-xs text-cyan-300 font-semibold">
+                        <i class="fa-solid fa-qrcode mr-1"></i> 스마트폰 카메라로 QR코드를 스캔하세요
+                    </p>
+                    
+                    <div class="bg-white p-3 rounded-2xl inline-block shadow-xl border-4 border-indigo-500/20">
+                        <img id="qr-img" src="" alt="데이터베이스 QR코드" class="w-36 h-36 mx-auto object-contain">
+                    </div>
+
+                    <p id="modal-detail-desc" class="text-xs text-slate-300 leading-relaxed px-2 bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-left">
+                        데이터베이스의 주요 역할과 리서치 활용법 설명입니다.
+                    </p>
+                </div>
+
+                <!-- Direct Access Button -->
+                <a id="modal-link-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-cyan-500 via-teal-400 to-indigo-600 hover:opacity-95 text-slate-950 font-black py-3.5 rounded-xl transition text-center text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 active:scale-98">
+                    <span>공식 데이터베이스 직접 접속하기</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="complete-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-lg z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-950 border-2 border-amber-400/80 rounded-3xl max-w-md w-full p-8 text-center space-y-5 shadow-2xl relative overflow-hidden pop-in">
+            <div class="w-20 h-20 bg-amber-400/20 border border-amber-400 text-amber-300 rounded-2xl mx-auto flex items-center justify-center text-4xl shadow-xl shadow-amber-400/20">
+                🏆
+            </div>
+            <div class="space-y-2">
+                <span class="text-xs font-black text-amber-400 uppercase tracking-widest bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/30">RESEARCH COMPLETE</span>
+                <h2 class="text-2xl font-black text-white">리서치 툴킷 완전 수집!</h2>
+                <p class="text-xs text-slate-300 leading-relaxed pt-1">
+                    축하합니다! 진로 브랜딩을 위한 9가지 공식 데이터베이스 해독을 모두 마쳤습니다.<br>
+                    수집한 리서치 툴을 활용하여 나라는 브랜드의 단단한 진로 전략을 구축해 보세요!
+                </p>
+            </div>
+            <button onclick="document.getElementById('complete-modal').classList.add('hidden')" class="w-full bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-950 font-black py-3.5 rounded-xl transition shadow-lg shadow-amber-400/20">
+                리서치 수집 결과 확인
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 py-4 text-center text-xs text-slate-500 bg-slate-950">
+        <p>ME: BRANDING 진로 학습 설계 · 브랜드 리서치 센터</p>
+    </footer>
+
+    <script>
+        // 9개 리서치 데이터베이스 정보 (차시 관련 문구 완전 삭제, 초성 수정 반영)
+        const planetData = [
+            {
+                id: 1,
+                initials: "ㅋ ㄹ ㅇ ㄴ",
+                answer: "커리어넷",
+                aliases: ["커리어넷", "career"],
+                hint: "진로 심리 검사, 진로 상담, 직업 정보 등 진로 고민이 있을 때 도움을 얻을 수 있는 대표 진로 데이터베이스",
+                desc: "자신의 흥미와 적성을 파악하고, 직업별 필수 정보와 직무 환경을 다각도로 조사할 수 있는 리서치 툴입니다.",
+                url: "https://www.career.go.kr",
+                icon: "fa-compass",
+                color: "from-blue-600 to-indigo-500",
+                category: "진로·적성 리서치"
+            },
+            {
+                id: 2,
+                initials: "ㅎ ㅇ ㅇ ㅍ",
+                answer: "하이입시",
+                aliases: ["하이입시", "하이입시포털", "학교알리미", "하이입포"],
+                hint: "일반고, 자율고, 특목고, 특성화고 등 다양한 고등학교 유형과 입시 정보를 조사하는 고교 정보 데이터베이스",
+                desc: "전국 고등학교의 입학 전형, 지원 자격 및 학교 유형별 특성을 분석할 수 있는 입시 리서치 툴입니다.",
+                url: "https://www.hischool.go.kr",
+                icon: "fa-school",
+                color: "from-indigo-600 to-purple-500",
+                category: "고교 입시 분석"
+            },
+            {
+                id: 3,
+                initials: "ㅇ ㄷ ㅅ ㅇ ㅎ ㄱ",
+                answer: "오디세아학교",
+                aliases: ["오디세아학교", "오디세이학교"],
+                hint: "삶의 의미와 방향을 찾는 교육원정대! 고1 학생들의 용기 있는 도전을 돕는 대안 교육과정 데이터 거점",
+                desc: "자유로운 탐색과 창의적 프로젝트 중심의 고등학교 1학년 대안 교육과정 정보를 조사하는 툴입니다.",
+                url: "https://odyssey.sen.go.kr",
+                icon: "fa-graduation-cap",
+                color: "from-purple-600 to-pink-500",
+                category: "대안 교육과정"
+            },
+            {
+                id: 4,
+                initials: "ㅎ ㅇ ㅈ ㅎ ㅇ ㅇ",
+                answer: "하이파이브",
+                aliases: ["하이파이브", "취업지원", "하이파이브취업지원"],
+                hint: "특성화고·마이스터고 입학, 진로, 취업 및 맞춤형 직무 교육 정보를 제공하는 직업계고 전문 데이터베이스",
+                desc: "직업계고의 전공 분야, 실습 환경, 직무 역량 및 취업 연계 지원 제도를 종합 탐색하는 리서치 툴입니다.",
+                url: "https://www.hifive.go.kr",
+                icon: "fa-briefcase",
+                color: "from-pink-500 to-rose-500",
+                category: "직업계고 데이터"
+            },
+            {
+                id: 5,
+                initials: "ㅎ ㄱ ㅇ ㄹ ㅁ",
+                answer: "학교알리미",
+                aliases: ["학교알리미", "학교알리미포털", "ㅎㄱㅇㅋㅁ"],
+                hint: "학교 교육과정, 학교 규칙, 성적 평가 계획 등 관심 학교의 핵심 공시 정보를 투명하게 파악하는 데이터베이스",
+                desc: "관심 고등학교의 학업성취도, 동아리 활동, 교육과정 편성표 등 객관적인 수치를 조사할 수 있는 리서치 툴입니다.",
+                url: "https://www.schoolinfo.go.kr",
+                icon: "fa-magnifying-glass-chart",
+                color: "from-cyan-500 to-blue-500",
+                category: "학교 공시 정보"
+            },
+            {
+                id: 6,
+                initials: "ㄱ ㄱ ㅎ ㅈ ㅈ ㅈ ㅇ ㅅ ㅌ",
+                answer: "고교학점제 종합지원센터",
+                aliases: ["고교학점제종합지원센터", "고교학점제", "고교학점제센터"],
+                hint: "학교 간 공동교육과정 신청, 선택 과목 안내 등 고교학점제 운영 시스템을 파악하는 핵심 정보 지원 센터",
+                desc: "고교학점제의 학점 이수 기준, 수강 신청 절차, 학생 맞춤형 선택 과목 이수 체계를 이해하는 리서치 툴입니다.",
+                url: "https://www.hscredit.kr",
+                icon: "fa-diagram-project",
+                color: "from-purple-600 to-indigo-600",
+                category: "학점제 가이드"
+            },
+            {
+                id: 7,
+                initials: "서울 ㄱ ㅇ ㅊ TV",
+                answer: "서울교육청TV",
+                aliases: ["서울교육청TV", "서울교육청tv", "서울시교육청TV", "서울교육청"],
+                hint: "현직 선생님들의 고교학점제 완전 정복 꿀팁과 과목 선택 가이드를 시청할 수 있는 공식 미디어 채널",
+                desc: "고교학점제 설명회 영상, 과목 선택 가이드, 실제 진로 성공 사례 미디어를 탐색하는 영상 데이터베이스입니다.",
+                url: "https://www.youtube.com/@seouleducand",
+                icon: "fa-circle-play",
+                color: "from-red-500 to-rose-600",
+                category: "영상 데이터베이스"
+            },
+            {
+                id: 8,
+                initials: "ㅅ ㅇ ㅈ ㄹ ㅈ ㅎ ㅈ ㅂ ㅅ ㅌ",
+                answer: "서울진로진학정보센터",
+                aliases: ["서울진로진학정보센터", "진로진학정보센터"],
+                hint: "각종 설명회 영상, 대학 진학 정보, 고교 진학 관련 맞춤형 1:1 컨설팅을 제공하는 진학 데이터베이스",
+                desc: "온·오프라인 진학 상담 자료와 검증된 대입·고입 예측 분석 자료를 수집할 수 있는 전문 데이터 툴입니다.",
+                url: "https://www.jinhak.or.kr",
+                icon: "fa-user-astronaut",
+                color: "from-emerald-500 to-teal-600",
+                category: "진학 분석 정보"
+            },
+            {
+                id: 9,
+                initials: "S E N ㅈ ㅎ ㄴ ㅊ ㅍ",
+                answer: "SEN 진학나침판",
+                aliases: ["SEN진학나침판", "진학나침판", "SEN진학나침반", "진학나침반", "서울교육리서치"],
+                hint: "대학별 정보, 학생부 종합전형 준비도, 과목 선택 길잡이 등 학생 자기주도적 진로·학업 설계를 지원하는 분석 툴",
+                desc: "희망 진로 계열에 맞는 고교 선택 과목 가이드북과 학업 설계 포트폴리오를 탐색할 수 있는 리서치 툴입니다.",
+                url: "https://seri.sen.go.kr",
+                icon: "fa-book-bookmark",
+                color: "from-amber-500 to-orange-500",
+                category: "학업 설계 길잡이"
+            }
+        ];
+
+        let unlockedPlanets = new Set();
+        let currentPlanet = null;
+
+        // Sound effects via Web Audio API
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'success') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.18);
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.25);
+                } else if (type === 'error') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.2);
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.22);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.22);
+                }
+            } catch (e) { console.log(e); }
+        }
+
+        // Initialization
+        window.onload = function() {
+            renderPlanets();
+            updateProgress();
+        };
+
+        function renderPlanets() {
+            const grid = document.getElementById('planet-grid');
+            grid.innerHTML = '';
+
+            planetData.forEach((planet) => {
+                const isUnlocked = unlockedPlanets.has(planet.id);
+
+                const card = document.createElement('div');
+                card.className = `p-5 rounded-3xl border transition-all duration-300 relative overflow-hidden group cursor-pointer flex flex-col justify-between ${
+                    isUnlocked 
+                    ? 'bg-slate-900/90 border-emerald-500/60 shadow-lg shadow-emerald-500/10 hover:border-emerald-400' 
+                    : 'bg-slate-900/60 border-slate-800 hover:border-indigo-500/60 hover:bg-slate-900/90'
+                }`;
+
+                card.onclick = () => openModal(planet);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="w-8 h-8 rounded-xl bg-slate-950 text-indigo-300 border border-indigo-500/30 flex items-center justify-center font-black text-xs font-brand shadow-inner">
+                                0${planet.id}
+                            </span>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-black ${
+                                isUnlocked 
+                                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                                : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                            }">
+                                ${isUnlocked ? '해독 완료 🔓' : '암호 잠금 🔐'}
+                            </span>
+                        </div>
+
+                        <div class="my-2 space-y-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr ${planet.color} text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-105 transition-transform shrink-0">
+                                    <i class="fa-solid ${planet.icon}"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-slate-300 block">${planet.category}</span>
+                                    <span class="text-[10px] text-slate-500 font-medium">RESEARCH TOOL #0${planet.id}</span>
+                                </div>
+                            </div>
+
+                            <div class="text-xl font-black text-amber-400 font-brand tracking-widest bg-slate-950/70 p-2.5 rounded-xl border border-slate-800 text-center mt-3">
+                                ${planet.initials}
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-slate-400 line-clamp-2 mt-3 leading-relaxed">
+                            ${planet.hint}
+                        </p>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-extrabold ${isUnlocked ? 'text-emerald-400' : 'text-indigo-400 group-hover:text-indigo-300'}">
+                        <span>${isUnlocked ? '데이터베이스 및 QR 열기' : '초성 암호 해독하기'}</span>
+                        <i class="fa-solid fa-chevron-right text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function openModal(planet) {
+            currentPlanet = planet;
+            const isUnlocked = unlockedPlanets.has(planet.id);
+
+            document.getElementById('modal-planet-num').innerText = `0${planet.id}`;
+            document.getElementById('modal-title').innerText = planet.category;
+            document.getElementById('modal-initials').innerText = planet.initials;
+            document.getElementById('modal-hint').innerText = planet.hint;
+            document.getElementById('quiz-input').value = '';
+            document.getElementById('quiz-error').classList.add('hidden');
+
+            const quizSection = document.getElementById('quiz-section');
+            const infoSection = document.getElementById('info-section');
+
+            if (isUnlocked) {
+                quizSection.classList.add('hidden');
+                infoSection.classList.remove('hidden');
+                showInfoView();
+            } else {
+                quizSection.classList.remove('hidden');
+                infoSection.classList.add('hidden');
+            }
+
+            document.getElementById('mission-modal').classList.remove('hidden');
+        }
+
+        function submitQuiz() {
+            const input = document.getElementById('quiz-input').value.trim().replace(/\s+/g, '');
+            if (!input) return;
+
+            const cleanAnswer = currentPlanet.answer.replace(/\s+/g, '');
+            const isMatch = currentPlanet.aliases.some(a => a.replace(/\s+/g, '') === input) || input === cleanAnswer;
+
+            if (isMatch) {
+                playSound('success');
+                unlockedPlanets.add(currentPlanet.id);
+                document.getElementById('quiz-section').classList.add('hidden');
+                document.getElementById('info-section').classList.remove('hidden');
+                showInfoView();
+                renderPlanets();
+                updateProgress();
+
+                if (unlockedPlanets.size === 9) {
+                    setTimeout(() => {
+                        document.getElementById('complete-modal').classList.remove('hidden');
+                    }, 500);
+                }
+            } else {
+                playSound('error');
+                document.getElementById('quiz-error').classList.remove('hidden');
+            }
+        }
+
+        function showInfoView() {
+            document.getElementById('unlocked-category').innerText = currentPlanet.category;
+            document.getElementById('unlocked-name').innerText = currentPlanet.answer;
+            document.getElementById('modal-detail-desc').innerText = currentPlanet.desc;
+            
+            // Dynamic QR code API URL
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(currentPlanet.url)}`;
+            document.getElementById('qr-img').src = qrApiUrl;
+
+            // Direct Link Button URL
+            const linkBtn = document.getElementById('modal-link-btn');
+            linkBtn.href = currentPlanet.url;
+        }
+
+        function updateProgress() {
+            const count = unlockedPlanets.size;
+            document.getElementById('progress-count').innerText = count;
+            
+            const pct = Math.round((count / 9) * 100);
+            document.getElementById('progress-percent').innerText = `${pct}%`;
+            document.getElementById('energy-bar').style.width = `${pct}%`;
+
+            let rank = "신입 브랜드 주니어 💼";
+            if (count >= 3) rank = "데이터 리서처 📊";
+            if (count >= 6) rank = "브랜드 전략 분석가 💡";
+            if (count === 9) rank = "수석 브랜드 기획자 🏆";
+
+            document.getElementById('rank-badge').innerText = rank;
+        }
+
+        function closeModal() {
+            document.getElementById('mission-modal').classList.add('hidden');
+        }
+
+        document.getElementById('quiz-input')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') submitQuiz();
+        });
+    </script>
+</body>
+</html>
